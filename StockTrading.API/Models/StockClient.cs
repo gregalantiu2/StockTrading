@@ -11,13 +11,11 @@ namespace StockTrading.API.Models
   public class StockClient : IStockClient
   {
     private IConfiguration _config;
+    public IAlpacaTradingClient Client { get; set; }
     public StockClient(IConfiguration config)
     {
       _config = config;
-    }
-    public IAlpacaTradingClient GetStockClient()
-    {
-      return Alpaca.Markets.Environments.Paper.GetAlpacaTradingClient(new SecretKey(_config.GetValue<string>("apiKey"),_config.GetValue<string>("apiSecret")));
+      Client = Alpaca.Markets.Environments.Paper.GetAlpacaTradingClient(new SecretKey(_config.GetValue<string>("apiKey"), _config.GetValue<string>("apiSecret")));
     }
   }
 }

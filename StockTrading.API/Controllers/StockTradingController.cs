@@ -19,10 +19,13 @@ namespace StockTrading.API.Controllers
         {
            _stockClient = stockClient;
         }
+        
         [HttpGet]
-        public string Get()
+        public async Task<string> GetAccountInformation()
         {
-           return "";
+            var account = await _stockClient.Client.GetAccountAsync();
+
+            return account.BuyingPower.ToString();
         }
 
     }

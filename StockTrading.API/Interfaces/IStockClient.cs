@@ -8,6 +8,6 @@ namespace StockTrading.API.Interfaces
 {
   public interface IStockClient
   {
-    IAlpacaTradingClient GetStockClient();
+    IAlpacaTradingClient Client { get; set; }
   }
 }
