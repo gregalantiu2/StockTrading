@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using StockTrading.API.Interfaces;
 
 namespace StockTrading.API.Controllers
 {
@@ -13,12 +14,11 @@ namespace StockTrading.API.Controllers
     [ApiController]
     public class StockTradingController : ControllerBase
     {
-        private IConfiguration _configuration;
-        public StockTradingController(IConfiguration configuration)
+        private IStockClient _stockClient;
+        public StockTradingController(IStockClient stockClient)
         {
-           _configuration = configuration;
+           _stockClient = stockClient;
         }
-
         [HttpGet]
         public string Get()
         {
